@@ -7,7 +7,7 @@ public class NewBehaviourScript : MonoBehaviour
 {
     public Transform user;
     private NavMeshAgent enemyAgent;
-    public bool UserDetect;
+    public bool UserDetect,UserPunch,UserDeath;
     private Animator enemyAnimator;
     // Start is called before the first frame update
     public void OnTriggerEnter(Collider other)
@@ -27,6 +27,14 @@ public class NewBehaviourScript : MonoBehaviour
         {
             enemyAgent.destination = user.position;
             enemyAnimator.SetInteger("Accion", 1);
+            
+        }
+        if (UserPunch){
+            enemyAnimator.SetBool("Golpe", true);
+        }
+        if (UserDeath){
+            enemyAnimator.SetBool("Stun", true);
         }
     }
+
 }
